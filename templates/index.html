@@ -1,0 +1,21 @@
+<html>
+<head>
+<title>End to End Project</title>
+</head>
+<body>
+<center>
+
+    <h1> Check how modern is your property! </h1><br>
+    <h2> Hello there {{personal_details.name}}. You look not a day older than {{personal_details.age}}</h2>
+
+    {% if pred_output %}
+    <h2>The label for the image is {{pred_output.label}} with {{pred_output.probability}}% probability</h2> 
+    {% endif %}
+
+    {% if user_image %}
+    <img src="{{ user_image }}" alt="User Image" height="224" width="224">
+    {% endif %}
+
+    </center>
+</body>
+</html> 
