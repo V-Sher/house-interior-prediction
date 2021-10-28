@@ -8,6 +8,16 @@
     <h1> Check how modern is your property! </h1><br>
     <h2> Hello there {{personal_details.name}}. You look not a day older than {{personal_details.age}}</h2>
 
+    <form action="{{url_for('dummy')}}" method="post" enctype="multipart/form-data">
+        <h3>Upload you House Pic</h3>
+        <input id="first" name="img" type="file" accept="image/*">
+        <input type="submit">
+    </form>
+
+    {% if img_shape %}
+    <h2>The shape for the image is {{img_shape}}.</h2> 
+    {% endif %}
+
     {% if pred_output %}
     <h2>The label for the image is {{pred_output.label}} with {{pred_output.probability}}% probability</h2> 
     {% endif %}
