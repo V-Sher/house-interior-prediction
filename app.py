@@ -19,7 +19,7 @@ app = Flask(__name__)
 
 # create a dict to populate the form; must be used when rendering the index.html
 myage = np.random.randint(10,100)
-personal_details = {'name': "Boo Sher", 
+personal_details = {'name': "Boooooooooo Sher", 
                     'age': myage}
 
 # basic first page
