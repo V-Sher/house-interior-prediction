@@ -32,7 +32,7 @@ def dummy():
     f = request.files['img'] 
     file = Image.open(f)
     file_shape = np.asarray(file).shape
-    return render_template('index.html', personal_details=personal_details, img_shape=file_shape)
+    return render_template('index.html', personal_details=personal_details, img_shape="abc")
     
 
 # # the name you give here in route will be reflected in URL
