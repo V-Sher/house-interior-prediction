@@ -32,8 +32,7 @@ def dummy():
     f = request.files['img'] 
     file = Image.open(f)
     file_shape = np.asarray(file).shape
-    return render_template('index.html', personal_details=personal_details, img_shape="abc")
-    
+    return render_template('index.html', personal_details=personal_details, img_shape=file_shape)
 
 # # the name you give here in route will be reflected in URL
 # @app.route('/disp_size_myimg', methods=['POST'])
