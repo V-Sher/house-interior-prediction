@@ -3,7 +3,7 @@
 # import base64
 import numpy as np
 from flask import Flask, render_template, request
-from PIL import Image
+# from PIL import Image
 # from tensorflow.keras.models import load_model
 # from utils import model_config
 
@@ -26,13 +26,6 @@ personal_details = {'name': "Boooooooooo Sher Reddy",
 @app.route('/')
 def sayhello():
     return render_template('index.html', personal_details=personal_details)
-
-@app.route('/dummy', methods=['POST'])
-def dummy():
-    f = request.files['img'] 
-    file = Image.open(f)
-    file_shape = np.asarray(file).shape
-    return render_template('index.html', personal_details=personal_details, img_shape=file_shape)
 
 # # the name you give here in route will be reflected in URL
 # @app.route('/disp_size_myimg', methods=['POST'])
