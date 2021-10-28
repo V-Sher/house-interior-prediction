@@ -27,6 +27,12 @@ personal_details = {'name': "Boooooooooo Sher Reddy",
 def sayhello():
     return render_template('index.html', personal_details=personal_details)
 
+@app.route('/dummy', methods=['POST'])
+def dummy():
+    num = int(request.form['num'])
+    image_shape = num*3
+    return render_template('index.html', personal_details=personal_details, img_shape=image_shape)
+
 # # the name you give here in route will be reflected in URL
 # @app.route('/disp_size_myimg', methods=['POST'])
 # def disp_size():

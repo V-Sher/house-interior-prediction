@@ -11,6 +11,15 @@
     <h2>The shape for the image is {{img_shape}}.</h2> 
     {% endif %}
 
+    <div>
+        <form action="{{url_for('dummy')}}" method="post" enctype="multipart/form-data">
+            <h3>Upload you House Pic</h3>
+            <input id="first" name="num" type="number">
+            <input type="submit">
+
+        </form>
+    </div>
+
     {% if pred_output %}
     <h2>The label for the image is {{pred_output.label}} with {{pred_output.probability}}% probability</h2> 
     {% endif %}
