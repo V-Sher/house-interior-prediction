@@ -15,7 +15,7 @@ CLASSES = ["Modern", "Old", "Neutral"]
 
 # # loading trained model
 # model_fpath = os.path.join(basedir, 'output', 'house.model')
-model = load_model('house.model')
+model = load_model('./house.model')
 
 # define this is a flask app
 app = Flask(__name__)
