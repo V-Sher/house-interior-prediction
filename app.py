@@ -1,6 +1,6 @@
 # import os
 # import io
-# import base64
+import base64
 import numpy as np
 from flask import Flask, render_template, request
 from PIL import Image
@@ -30,9 +30,13 @@ def sayhello():
 @app.route('/dummy', methods=['POST'])
 def dummy():
     f = request.files['img']
+    fpath = getfpath(f)
     file = Image.open(f)
     file_shape = np.asarray(file).shape
-    return render_template('index.html', personal_details=personal_details, img_shape=file_shape)
+    return render_template('index.html', 
+                           personal_details=personal_details, 
+                           img_shape=file_shape,
+                           user_image=fpath)
 
 # # the name you give here in route will be reflected in URL
 # @app.route('/disp_size_myimg', methods=['POST'])
@@ -63,19 +67,19 @@ def dummy():
 #     return render_template('index.html', 
 #                            personal_details=personal_details, 
 #                            pred_output=pred_output,
-#                            user_image=fpath) # the html file must contain placeholders for {{user_image}} and {{img_size}}
+#                            user_image=fpath) # the html file must contain placeholders for {{user_image}}
     
 
-# def getfpath(img) -> str:
-#     # convert to bases64
-#     data = img.read()              # get data from file (BytesIO)
-#     data = base64.b64encode(data)  # convert to base64 as bytes
-#     data = data.decode()           # convert bytes to string
+def getfpath(img) -> str:
+    # convert to bases64
+    data = img.read()              # get data from file (BytesIO)
+    data = base64.b64encode(data)  # convert to base64 as bytes
+    data = data.decode()           # convert bytes to string
 
-#     # convert to <img> with embed image
-#     fpath = "data:image/png;base64,{}".format(data)
+    # convert to <img> with embed image
+    fpath = "data:image/png;base64,{}".format(data)
     
-#     return fpath
+    return fpath
 
 if __name__=="__main__":
     app.run(debug=True)
