@@ -4,15 +4,18 @@ import base64
 import numpy as np
 from flask import Flask, render_template, request
 from PIL import Image
-# from tensorflow.keras.models import load_model
+from tensorflow.keras.models import load_model
 # from utils import model_config
+
+IMG_SHAPE = (224,224)
+CLASSES = ["Modern", "Old", "Neutral"]
 
 # # project home directory
 # basedir = os.path.abspath(os.path.dirname(__file__))
 
 # # loading trained model
 # model_fpath = os.path.join(basedir, 'output', 'house.model')
-# model = load_model(model_fpath)
+model = load_model('house.model')
 
 # define this is a flask app
 app = Flask(__name__)
@@ -33,10 +36,31 @@ def dummy():
     fpath = getfpath(f)
     file = Image.open(f)
     file_shape = np.asarray(file).shape
+    
+    #### PREDICTION STARTS HERE ####
+    
+    # resize image to (224,224) if needed
+    if file.size != IMG_SHAPE:
+        file = file.resize(IMG_SHAPE)
+        file_shape = np.asarray(file).shape
+    
+    # pass the image through the network to obtain our predictions
+    preds = model.predict(np.expand_dims(file, axis=0))[0]
+    i = np.argmax(preds)
+    label = CLASSES[i]
+    prob = preds[i]
+    
+    pred_output={
+    'img_size': file_shape,
+    'label': label,
+    'probability': np.round(prob*100,2)
+    }  
+    
     return render_template('index.html', 
                            personal_details=personal_details, 
                            img_shape=file_shape,
-                           user_image=fpath)
+                           user_image=fpath,
+                           pred_output=pred_output)
 
 # # the name you give here in route will be reflected in URL
 # @app.route('/disp_size_myimg', methods=['POST'])
