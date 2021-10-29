@@ -60,7 +60,7 @@ def dummy():
                            personal_details=personal_details, 
                            img_shape=file_shape,
                            user_image=fpath,
-                        #    pred_output=pred_output
+                           pred_output=pred_output
                            )
 
 # # the name you give here in route will be reflected in URL
