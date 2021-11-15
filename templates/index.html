@@ -1,10 +1,12 @@
 <html>
 <head>
 <title>End to End Project</title>
+<link rel="stylesheet" type="text/css" href= "{{ url_for('static',filename='styles/style.css') }}">
 </head>
 <body>
 <center>
-
+    <div class="background"></div>
+    <div>
     <h1> Check how modern is your property! </h1><br>
 
     <div>
@@ -25,9 +27,9 @@
     {% endif %}
 
     {% if user_image %}
-    <img src="{{ user_image }}" alt="User Image" height="224" width="224">
+    <img src="{{ user_image }}" alt="User Image" height="350" width="350">
     {% endif %}
-
+    </div>
     </center>
 </body>
 </html> 
