@@ -1,20 +1,14 @@
-# import os
-# import io
 import base64
 import numpy as np
 from flask import Flask, render_template, request
 from PIL import Image
 from tensorflow.keras.models import load_model
-# from utils import model_config
 
 IMG_SHAPE = (224,224)
 CLASSES = ["Modern", "Old"]
 
-# # project home directory
-# basedir = os.path.abspath(os.path.dirname(__file__))
-
 # loading trained model
-# model = load_model('house.model')
+# model = load_model('house.model') # large VGG model trained on 3 classes - [Modern, Old, Neutral]
 model = load_model('fine_tuned_house.h5')
 
 # define this is a flask app
