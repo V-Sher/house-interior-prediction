@@ -8,21 +8,22 @@ from tensorflow.keras.models import load_model
 # from utils import model_config
 
 IMG_SHAPE = (224,224)
-CLASSES = ["Modern", "Old", "Neutral"]
+CLASSES = ["Modern", "Old"]
 
 # # project home directory
 # basedir = os.path.abspath(os.path.dirname(__file__))
 
 # # loading trained model
 # model_fpath = os.path.join(basedir, 'output', 'house.model')
-model = load_model('house.model')
+# model = load_model('house.model')
+model = load_model('fine_tuned_house.h5')
 
 # define this is a flask app
 app = Flask(__name__)
 
 # create a dict to populate the form; must be used when rendering the index.html
 myage = np.random.randint(10,100)
-personal_details = {'name': "Boooooooo Sher Reddy", 
+personal_details = {'name': "Boooooooo Sher Reddy 2 class", 
                     'age': myage}
 
 # basic first page
