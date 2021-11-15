@@ -52,6 +52,9 @@ def dummy():
                            )
 
 def getfpath(img) -> str:
+    # Even if img was read before, we put the pointer back to beginning of file
+    img.seek(0) 
+
     # convert to bases64
     data = img.read()              # get data from file (BytesIO)
     data = base64.b64encode(data)  # convert to base64 as bytes
