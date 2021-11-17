@@ -23,7 +23,7 @@
     {% endif %}
 
     {% if pred_output %}
-    <h2>The label for the image is {{pred_output.label}} with {{pred_output.probability}}% probability.</h2> 
+    <h2>Predicted label: {{pred_output.label}} with {{pred_output.probability}}% confidence.</h2> 
     {% endif %}
 
     {% if user_image %}
