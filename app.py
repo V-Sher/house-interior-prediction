@@ -16,11 +16,11 @@ app = Flask(__name__)
 
 # basic first page
 @app.route('/')
-def sayhello():
+def intro():
     return render_template('index.html')
 
-@app.route('/dummy', methods=['POST'])
-def dummy():
+@app.route('/predict-interior', methods=['POST'])
+def predict():
     f = request.files['img']
     fpath = getfpath(f)
     file = Image.open(f)
